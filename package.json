@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/wa20/9-Note-Pad-App/issues"
   },
-  "homepage": "https://github.com/wa20/9-Note-Pad-App#readme"
+  "homepage": "https://github.com/wa20/9-Note-Pad-App#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
