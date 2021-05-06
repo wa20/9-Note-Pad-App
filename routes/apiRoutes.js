@@ -6,6 +6,9 @@ const router = require("express").Router();
 
 router.get("/api/notes", (req, res) => {
   console.log("get request called")
+  noteData.getAllNotes().then((notes) => {
+      return res.json(notes)
+  })
 });
 
 router.post("/api/notes", (req, res) => {
