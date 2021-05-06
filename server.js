@@ -3,14 +3,14 @@ const express = require('express');
 
 const app = express()
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3005;
 
 
 
 app.use(express.json());
-app.use(express.static('public'));// this is how we serve files as middleware. in this instance we pass everything inside the contents of public
-app.use('/api', apiRoutes) //double check
-app.use('/', htmlRouts) // double check
+app.use(express.static('./public'));// this is how we serve files as middleware. in this instance we pass everything inside the contents of public. for every request we serve these files.
+// app.use('/', apiRoutes) //double check - currently looking into nothing need to create files
+// app.use('/', htmlRoutes) // double check
 
 
-app.use
+app.listen(PORT, () => {console.log(`Server listneing on Port: ${PORT}`)})
