@@ -1,7 +1,19 @@
 // stored note data
-const noteData = require('../db/data')
-
-//Routing
+const noteData = require("../db/data");
+const router = require("express").Router();
 
 //get requests for notes page
-app.get('/notes', (req, res) => res.json(noteData))
+
+router.get("/api/notes", (req, res) => {
+  console.log("get request called")
+});
+
+router.post("/api/notes", (req, res) => {
+    console.log("post request called")
+});
+
+router.delete("/api/notes/:id", (req, res) => {
+    console.log("delete request called")
+});
+
+module.exports = router;

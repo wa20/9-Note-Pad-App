@@ -13,4 +13,12 @@
 
 - showing 1 note?
      - api route for getting one note
-     - 
+     - beware of bubling when doing the click listeners 
+
+- click on write write/pen icon should open up a new blank note page
+
+
+bonus:
+    - delete a note
+    - 
+    - plumb delete button to hit the delete api
