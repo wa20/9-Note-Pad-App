@@ -31,6 +31,8 @@ postNote(note){
     //1. Get all notes from db.json
     //2. Create a new array of objects containing old notes and the new note
     //3. Write the new array of objects/notes to the db.json file utilising writeDbJson function
+
+    
 }
 
   //Take an id and remove from db.json
