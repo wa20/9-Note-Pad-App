@@ -40,7 +40,7 @@ postNote = (note) =>{
     return this.getAllNotes()
         .then((note) => [...note, addNote])
         .then((newNote) => {
-            this.writeFile(newNote)
+            this.writeDbJson(newNote)
         })
         .then(() => console.log("added new note"))
 }
@@ -57,7 +57,7 @@ postNote = (note) =>{
     .then((notes) =>
         notes.filter((note) => note.id !== id)
     )
-    .then((filtered) => this.writeFile(filtered))
+    .then((filtered) => this.writeDbJson(filtered))
 }
 
 }
