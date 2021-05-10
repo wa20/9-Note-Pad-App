@@ -1,25 +1,25 @@
 const util = require("util");
 const fs = require("fs");
-const uniqueID = require("uuid") //install package
+const uniqueID = require("uuidv4") //install package
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
 class Db {
-  readDbJson() {
+  readDbJson = () => {
     return readFileAsync("db/db.json", "utf-8");
   }
 
-  writeDbJson(notes){
-      return writeFileAsync('db/db.json', JSON.stringify(notes))
+  writeDbJson = (note) => {
+      return writeFileAsync('db/db.json', JSON.stringify(note))
   }
   //Get all notes from db.json and return
   //we parse the notes, and put it into an array
-  getAllNotes() {
-    return this.readDbJson().then((notes) => {
+  getAllNotes = () => {
+    return this.readDbJson().then((note) => {
       let parsed;
       try {
-        parsed = [].concat(JSON.parse(notes));
+        parsed = [].concat(JSON.parse(note));
       } catch (err) {
         parsed = [];
       }
@@ -28,16 +28,16 @@ class Db {
   }
 
   //Take a note as an argument and added to db.json
-postNote(note){
+postNote = (note) =>{
     const { title, text } = note
 
     const addNote = {
         title,
         text,
-        id: uniqueID.v4(),
+        id: uniqueID,
     }
 
-    return this.getNotes()
+    return this.getNotes
         .then((note) => [...note, addNote])
         .then((newNoteArray) => {
             this.writeFile(newNoteArray)
@@ -52,8 +52,8 @@ postNote(note){
 
 
   //Take an id and remove from db.json
-  deleteNote(id) {
-    return this.getNotes()
+  deleteNote = (id) => {
+    return this.getNotes
     .then((notes) =>
         notes.filter((note) => note.id !== id)
     )
