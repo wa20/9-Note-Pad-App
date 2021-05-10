@@ -1,6 +1,6 @@
 const util = require("util");
 const fs = require("fs");
-const random = require("uuid") //install package
+const uniqueID = require("uuid") //install package
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -34,7 +34,7 @@ postNote(note){
     const addNote = {
         title,
         text,
-        id: random.v4(),
+        id: uniqueID.v4(),
     }
 
     return this.getNotes()
