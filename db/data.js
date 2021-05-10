@@ -49,15 +49,13 @@ postNote = (note) =>{
     //3. Write the new array of objects/notes to the db.json file utilising writeDbJson function
 
 
-
-
   //Take an id and remove from db.json
   deleteNote = (id) => {
     return this.getAllNotes()
     .then((notes) =>
         notes.filter((note) => note.id !== id)
     )
-    .then((filtered) => this.writeDbJson(filtered))
+    .then((filteredArray) => this.writeDbJson(filteredArray))
 }
 
 }
