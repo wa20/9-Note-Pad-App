@@ -37,10 +37,10 @@ postNote = (note) =>{
         id: uniqueID,
     }
 
-    return this.getNotes
+    return this.getAllNotes()
         .then((note) => [...note, addNote])
-        .then((newNoteArray) => {
-            this.writeFile(newNoteArray)
+        .then((newNote) => {
+            this.writeFile(newNote)
         })
         .then(() => console.log("added new note"))
 }
@@ -53,7 +53,7 @@ postNote = (note) =>{
 
   //Take an id and remove from db.json
   deleteNote = (id) => {
-    return this.getNotes
+    return this.getAllNotes()
     .then((notes) =>
         notes.filter((note) => note.id !== id)
     )
