@@ -2,6 +2,7 @@ const util = require("util");
 const fs = require("fs");
 const uniqueID = require("uuidv4") //install package
 
+
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -17,13 +18,14 @@ class Db {
   //we parse the notes, and put it into an array
   getAllNotes = () => {
     return this.readDbJson().then((note) => {
-      let parsed;
+      let parsedNotes;
+
       try {
-        parsed = [].concat(JSON.parse(note));
+        parsedNotes = [].concat(JSON.parse(note));
       } catch (err) {
-        parsed = [];
+        parsedNotes = [];
       }
-      return parsed;
+      return parsedNotes;
     });
   }
 
@@ -31,18 +33,22 @@ class Db {
 postNote = (note) =>{
     const { title, text } = note
 
+    if(!title || !text){
+      throw new Error('Include titale and text')
+    }
+
     const addNote = {
         title,
         text,
-        id: uniqueID,
+        id: uniqueID(),
     }
 
     return this.getAllNotes()
         .then((note) => [...note, addNote])
-        .then((newNote) => {
-            this.writeDbJson(newNote)
-        })
-        .then(() => console.log("added new note"))
+        .then((newNote) => {this.writeDbJson(newNote)})
+        .then(() => 
+        addNote,
+        console.log("added new note"))
 }
     //1. Get all notes from db.json
     //2. Create a new array of objects containing old notes and the new note
